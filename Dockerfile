@@ -4,8 +4,8 @@ LABEL maintainer "Drecom Technical Development Department <pr_itn@drecom.co.jp>"
 # Change default locale to ja-JP.UTF-8
 ENV LANG=ja_JP.UTF-8
 RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-RUN cp -p /usr/share/zoneinfo/Japan /etc/localtime \
-&&  echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
+RUN cp -p /usr/share/zoneinfo/Japan /etc/localtime && \
+    echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
 
 # Install Node.js and Yarn
 RUN yum -y install make gcc-c++ && \
