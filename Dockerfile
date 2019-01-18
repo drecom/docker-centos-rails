@@ -7,30 +7,28 @@ RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 RUN cp -p /usr/share/zoneinfo/Japan /etc/localtime && \
     echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
 
-# Install Node.js and Yarn
-RUN yum -y install make gcc-c++ && \
-    curl -sL https://rpm.nodesource.com/setup_11.x | bash - && \
-    curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
-    yum -y install \
-      nodejs \
-      yarn
+# Added repository
+RUN curl -sL https://rpm.nodesource.com/setup_11.x | bash - && \
+    curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
 
 # Install packages
-RUN yum install -y \
-    readline-devel\
-    wget \
-    curl \
-    dtach \
-    vim \
-    hash-slinger \
-    bzip2 \
-    tar \
-    ImageMagick \
-    ImageMagick-devel \
-    libffi-devel \
-    libxslt-devel \
-    mysql
-
-RUN yum clean all
+RUN yum -y  groupinstall "Development Tools" && \
+    yum -y install \
+        epel-release \
+        gcc \
+        nodejs \
+        yarn  \
+        wget \
+        make \
+        mysql \
+        redis \
+        readline-devel \
+        libffi-devel \
+        libxslt-devel \
+        zlib-devel \
+        openssl-devel \
+        mysql-devel \
+        sqlite-devel && \
+    yum clean all
 
 CMD [ "irb" ]
