@@ -1,4 +1,4 @@
-FROM drecom/centos-ruby:2.6.0
+FROM docker-centos-ruby:2.6.0-slim
 LABEL maintainer "Drecom Technical Development Department <pr_itn@drecom.co.jp>"
 
 ENV RALS_VERSION 5.2.2
