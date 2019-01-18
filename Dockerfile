@@ -1,16 +1,11 @@
 FROM docker-centos-ruby:2.6.0-slim
 LABEL maintainer "Drecom Technical Development Department <pr_itn@drecom.co.jp>"
 
-ENV RALS_VERSION 5.2.2
-
 # Change default locale to ja-JP.UTF-8
 ENV LANG=ja_JP.UTF-8
 RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 RUN cp -p /usr/share/zoneinfo/Japan /etc/localtime \
 &&  echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
-
-# Install Ruby on Rails
-RUN gem install rails --version "$RAILS_VERSION"
 
 # Install Node.js and Yarn
 RUN yum -y install make gcc-c++ && \
