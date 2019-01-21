@@ -1,4 +1,4 @@
-FROM drecom/centos-ruby:2.6.0-slim
+FROM drecom/centos-ruby:2.5.3-slim
 LABEL maintainer "Drecom Technical Development Department <pr_itn@drecom.co.jp>"
 
 # Change default locale to ja-JP.UTF-8
