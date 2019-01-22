@@ -28,6 +28,7 @@ RUN yum -y  groupinstall "Development Tools" && \
         openssl-devel \
         mysql-devel \
         sqlite-devel && \
-    yum clean all
+    yum clean all && \
+    gem install bundler -N
 
 CMD [ "irb" ]
