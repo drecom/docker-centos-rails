@@ -1,9 +1,12 @@
 version: 2
-jobs:
+
+defaults: &defaults
+  working_directory: ~/image
+  docker:
+    - image: docker:stable-git
+
   build:
-    working_directory: ~/image
-    docker:
-      - image: docker:stable-git
+    <<: *defaults
     steps:
       - checkout
       - setup_remote_docker
@@ -12,6 +15,10 @@ jobs:
             - v1-{{ .Branch }}
           paths:
             - /caches/image.tar
+      - run:
+          name: Lint Dockerfile
+          command: |
+        　　docker run --rm -i hadolint/hadolint < ./Dockerfile
       - run:
           name: Load Docker image layer cache
           command: |
@@ -33,7 +40,7 @@ jobs:
       - run:
           name: rails new Project
           command: |
-            docker run -it --rm centos-rails bash -c "gem install rails && cd /tmp && rails new test-app"
+            docker run -it --rm centos-rails bash -c "gem install rails && cd /tmp && rails new test-app -d mysql"
       - run:
           name: Show docker image size
           command: |
