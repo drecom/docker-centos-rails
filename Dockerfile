@@ -1,5 +1,6 @@
 FROM drecom/centos-ruby:2.4.5-slim
 LABEL maintainer "Drecom Technical Development Department <pr_itn@drecom.co.jp>"
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Change default locale to ja-JP.UTF-8
 ENV LANG=ja_JP.UTF-8
