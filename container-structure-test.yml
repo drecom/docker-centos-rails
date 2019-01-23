@@ -1,0 +1,76 @@
+---
+schemaVersion: "2.0.0"
+commandTests:
+- name: "default locale settings"
+  command: "echo"
+  args:
+  - "$LANG"
+  expectedOutput: 
+  - ja_JP\.UTF-8
+
+- name: "Timezone setting"
+  command: "strings"
+  args:
+  - "/etc/localtime"
+  expectedOutput: 
+  - JST-9
+
+- name: "ruby Installation"
+  setup: 
+  - ["yum", "-y", "install", "which"]
+  command: "which"
+  args:
+  - "ruby"
+  expectedOutput: 
+  - /usr/local/bin/ruby
+
+- name: "ruby version"
+  command: "ruby"
+  args:
+  - "--version"
+  expectedOutput: 
+  - .*2\.4\.5.*
+
+- name: "bundle Installation"
+  setup: 
+  - ["yum", "-y", "install", "which"]
+  command: "which"
+  args:
+  - "bundle"
+  expectedOutput: 
+  - /usr/local/bin/bundle
+
+- name: "node Installation"
+  setup: 
+  - ["yum", "-y", "install", "which"]
+  command: "which"
+  args:
+  - "node"
+  expectedOutput: 
+  - /usr/bin/node
+
+- name: "yarn Installation"
+  setup: 
+  - ["yum", "-y", "install", "which"]
+  command: "which"
+  args:
+  - "yarn"
+  expectedOutput: 
+  - /usr/bin/yarn
+
+- name: "packages Installation"
+  command: "yum"
+  args:
+  - "list"
+  expectedOutput: 
+  - gcc\.x86_64
+  - wget\.x86_64
+  - mariadb\.x86_64
+  - redis\.x86_64
+  - readline-devel\.x86_64
+  - libffi-devel\.x86_64
+  - libxslt-devel\.x86_64
+  - zlib-devel\.x86_64
+  - openssl-devel\.x86_64
+  - mariadb-devel\.x86_64
+  - sqlite-devel\.x86_64
