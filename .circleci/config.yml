@@ -1,12 +1,9 @@
 version: 2
-
-defaults: &defaults
-  working_directory: ~/image
-  docker:
-    - image: docker:stable-git
-
+jobs:
   build:
-    <<: *defaults
+    working_directory: ~/image
+    docker:
+      - image: docker:stable-git
     steps:
       - checkout
       - setup_remote_docker
@@ -18,7 +15,7 @@ defaults: &defaults
       - run:
           name: Lint Dockerfile
           command: |
-        　　docker run --rm -i hadolint/hadolint < ./Dockerfile
+            docker run --rm -i hadolint/hadolint < ./Dockerfile
       - run:
           name: Load Docker image layer cache
           command: |
