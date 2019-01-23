@@ -13,6 +13,10 @@ jobs:
           paths:
             - /caches/image.tar
       - run:
+          name: Lint Dockerfile
+          command: |
+            docker run --rm -i hadolint/hadolint < ./Dockerfile
+      - run:
           name: Load Docker image layer cache
           command: |
             set +o pipefail
@@ -33,7 +37,7 @@ jobs:
       - run:
           name: rails new Project
           command: |
-            docker run -it --rm centos-rails bash -c "gem install rails && cd /tmp && rails new test-app"
+            docker run -it --rm centos-rails bash -c "gem install rails && cd /tmp && rails new test-app -d mysql"
       - run:
           name: Show docker image size
           command: |
