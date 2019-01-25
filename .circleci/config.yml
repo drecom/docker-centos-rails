@@ -31,7 +31,7 @@ jobs:
             wget https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64
             chmod +x ./container-structure-test-linux-amd64 
             mv ./container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
-            container-structure-test test --image centos-rails --config ./container-structure-test.yml
+            container-structure-test test --image centos-rails --config ./test/container-structure-test.yml
       - run:
           name: Save Docker image layer cache
           command: |
@@ -42,9 +42,9 @@ jobs:
           paths:
             - /caches/image.tar
       - run:
-          name: rails new Project
+          name: Test Bundle Install
           command: |
-            docker run -it --rm centos-rails bash -c "gem install rails && cd /tmp && rails new test-app -d mysql"
+            docker run -it --rm -v `pwd`:/rails: centos-rails bash -c "BUNDLE_GEMFILE=/rails/gemfiles/Gemfile.test bundle install"
       - run:
           name: Show docker image size
           command: |

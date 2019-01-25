@@ -1,0 +1,84 @@
+source "https://rubygems.org"
+
+gem "rails", "~> 5.1.1"
+gem "active_decorator"
+gem "active_hash"
+gem "active_model_serializers"
+gem "activerecord-import"
+gem "activerecord-mysql-index-hint"
+gem "activerecord-simple_index_name"
+gem "activerecord-turntable"
+gem "barrage"
+gem "capistrano", require: false
+gem "capistrano-rails", require: false
+gem "dalli-elasticache"
+gem "equalizer"
+gem "faraday"
+gem "faraday_middleware"
+gem "global"
+gem "itree"
+gem "jbuilder", "~> 2.5"
+gem "jemalloc", require: false
+gem "json-schema"
+gem "jwt"
+gem "kaminari"
+gem "komachi_heartbeat"
+gem "mysql2", ">= 0.3.18", "< 0.5"
+gem "newrelic_rpm"
+gem "oj"
+gem "oj_mimic_json"
+gem "puma", "~> 3.7"
+gem "rack-cors", require: "rack/cors"
+gem "redis-elasticache"
+gem "redis-namespace"
+gem "redis-objects"
+gem "request_store"
+gem "ruby-swagger"
+gem "sentry-raven", ">= 2.7.4"
+gem "sidekiq"
+gem "sidekiq-cron"
+gem "tzinfo-data"
+gem "unicorn"
+gem "unicorn-worker-killer"
+gem "walker_method"
+gem "weighted_sample"
+gem "with_probability"
+
+group :development, :test do
+  gem "arproxy"
+  gem "bullet"
+  gem "byebug"
+  gem "rails-erd"
+end
+
+group :development do
+  gem "annotate"
+  gem "better_errors"
+  gem "guard-rspec"
+  gem "guard-rubocop"
+  gem "listen", ">= 3.0.5", "< 3.2"
+  gem "onkcop"
+  gem "pry-rails"
+  gem "pry-remote"
+  gem "rubocop"
+  gem "slim_lint"
+  gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
+end
+
+group :test do
+  gem "database_rewinder"
+  gem "factory_girl_rails"
+  gem "json_expressions"
+  gem "rspec-parameterized"
+  gem "rspec-power_assert"
+  gem "rspec-rails"
+  gem "rspec-sidekiq"
+  gem "simplecov", require: false
+  gem "test-queue"
+  gem "webmock"
+end
+
+group :staging, :development, :test do
+  gem "timecop"
+end
