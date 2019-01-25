@@ -15,48 +15,12 @@ commandTests:
   expectedOutput: 
   - JST-9
 
-- name: "ruby Installation"
-  setup: 
-  - ["yum", "-y", "install", "which"]
-  command: "which"
-  args:
-  - "ruby"
-  expectedOutput: 
-  - /usr/local/bin/ruby
-
 - name: "ruby version"
   command: "ruby"
   args:
   - "--version"
   expectedOutput: 
   - .*2\.4\.5.*
-
-- name: "bundle Installation"
-  setup: 
-  - ["yum", "-y", "install", "which"]
-  command: "which"
-  args:
-  - "bundle"
-  expectedOutput: 
-  - /usr/local/bin/bundle
-
-- name: "node Installation"
-  setup: 
-  - ["yum", "-y", "install", "which"]
-  command: "which"
-  args:
-  - "node"
-  expectedOutput: 
-  - /usr/bin/node
-
-- name: "yarn Installation"
-  setup: 
-  - ["yum", "-y", "install", "which"]
-  command: "which"
-  args:
-  - "yarn"
-  expectedOutput: 
-  - /usr/bin/yarn
 
 - name: "packages Installation"
   command: "yum"
@@ -74,3 +38,20 @@ commandTests:
   - openssl-devel\.x86_64
   - mariadb-devel\.x86_64
   - sqlite-devel\.x86_64
+
+fileExistenceTests:
+  - name: ruby
+    path: /usr/local/bin/ruby
+    shouldExist: true
+
+  - name: bundle
+    path: /usr/local/bin/bundle
+    shouldExist: true
+
+  - name: yarn
+    path: /usr/bin/yarn
+    shouldExist: true
+
+  - name: node
+    path: /usr/bin/node
+    shouldExist: true
