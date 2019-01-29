@@ -1,5 +1,5 @@
 ---
-schemaVersion: "2.0.0"
+schemaVersion: 2.0.0
 commandTests:
 - name: "default locale settings"
   command: "echo"
@@ -20,7 +20,7 @@ commandTests:
   args:
   - "--version"
   expectedOutput: 
-  - .*2\.5\.3.*
+  - .*2\.4\.5.*
 
 - name: "packages Installation"
   command: "yum"
