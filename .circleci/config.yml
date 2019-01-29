@@ -26,6 +26,13 @@ jobs:
           command: |
             docker build --cache-from=image -t centos-rails .
       - run:
+          name: Test Docker image
+          command: |
+            wget https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64
+            chmod +x ./container-structure-test-linux-amd64 
+            mv ./container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+            container-structure-test test --image centos-rails --config ./test/container-structure-test.yml
+      - run:
           name: Save Docker image layer cache
           command: |
             mkdir -p /caches
