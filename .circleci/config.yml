@@ -42,10 +42,6 @@ jobs:
           paths:
             - /caches/image.tar
       - run:
-          name: Test Bundle Install
-          command: |
-            docker run -it --rm -v `pwd`:/rails: centos-rails bash -c "BUNDLE_GEMFILE=/rails/gemfiles/Gemfile.test bundle install"
-      - run:
           name: Show docker image size
           command: |
             docker images
