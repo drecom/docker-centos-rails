@@ -1,0 +1,57 @@
+---
+schemaVersion: 2.0.0
+commandTests:
+- name: "default locale settings"
+  command: "echo"
+  args:
+  - "$LANG"
+  expectedOutput: 
+  - ja_JP\.UTF-8
+
+- name: "Timezone setting"
+  command: "strings"
+  args:
+  - "/etc/localtime"
+  expectedOutput: 
+  - JST-9
+
+- name: "ruby version"
+  command: "ruby"
+  args:
+  - "--version"
+  expectedOutput: 
+  - .*2\.6\.0.*
+
+- name: "packages Installation"
+  command: "yum"
+  args:
+  - "list"
+  expectedOutput: 
+  - gcc\.x86_64
+  - wget\.x86_64
+  - mariadb\.x86_64
+  - redis\.x86_64
+  - readline-devel\.x86_64
+  - libffi-devel\.x86_64
+  - libxslt-devel\.x86_64
+  - zlib-devel\.x86_64
+  - openssl-devel\.x86_64
+  - mariadb-devel\.x86_64
+  - sqlite-devel\.x86_64
+
+fileExistenceTests:
+  - name: ruby
+    path: /usr/local/bin/ruby
+    shouldExist: true
+
+  - name: bundle
+    path: /usr/local/bin/bundle
+    shouldExist: true
+
+  - name: yarn
+    path: /usr/bin/yarn
+    shouldExist: true
+
+  - name: node
+    path: /usr/bin/node
+    shouldExist: true
