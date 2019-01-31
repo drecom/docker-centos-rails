@@ -20,7 +20,7 @@ commandTests:
   args:
   - "--version"
   expectedOutput: 
-  - .*2\.6\.0.*
+  - .*2\.6\.1.*
 
 - name: "packages Installation"
   command: "yum"
