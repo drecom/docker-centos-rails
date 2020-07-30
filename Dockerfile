@@ -1,4 +1,4 @@
-FROM drecom/centos-ruby:2.5.8-slim
+FROM drecom/centos-ruby:2.4.10-slim
 LABEL maintainer "Drecom Technical Development Department <pr_itn@drecom.co.jp>"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
