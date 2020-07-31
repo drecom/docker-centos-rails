@@ -4,6 +4,7 @@ A CentOS ruby on rails docker container
 
 ## tags and links 
 * `latest` [(master/Dockerfile)](https://github.com/drecom/docker-centos-rails/blob/master/Dockerfile)
+* `ruby-2.6.6` [(ruby-2.6.6/Dockerfile)](https://github.com/drecom/docker-centos-rails/blob/ruby-2.6.6/Dockerfile)
 * `ruby-2.6.5` [(ruby-2.6.5/Dockerfile)](https://github.com/drecom/docker-centos-rails/blob/ruby-2.6.5/Dockerfile)
 * `ruby-2.6.4` [(ruby-2.6.4/Dockerfile)](https://github.com/drecom/docker-centos-rails/blob/ruby-2.6.4/Dockerfile)
 * `ruby-2.6.3` [(ruby-2.6.3/Dockerfile)](https://github.com/drecom/docker-centos-rails/blob/ruby-2.6.3/Dockerfile)
