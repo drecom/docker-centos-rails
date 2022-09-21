@@ -13,10 +13,6 @@ jobs:
           paths:
             - /caches/image.tar
       - run:
-          name: Lint Dockerfile
-          command: |
-            docker run --rm -i hadolint/hadolint < ./Dockerfile
-      - run:
           name: Load Docker image layer cache
           command: |
             set +o pipefail
